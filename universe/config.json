@@ -9,7 +9,7 @@
         "name": {
           "description": "The name of the service instance",
           "type": "string",
-          "default": "sql",
+          "default": "SQL Services",
           "title": "Service name"
         },
         "user": {
