@@ -4,7 +4,7 @@ scheduler:
   principal: {{FRAMEWORK_PRINCIPAL}}
   user: {{FRAMEWORK_USER}}
 pods:
-  myservice:
+  sql:
     count: {{NODE_COUNT}}
     placement: '{{{NODE_PLACEMENT}}}'
     {{#ENABLE_VIRTUAL_NETWORK}}
@@ -12,7 +12,18 @@ pods:
       {{VIRTUAL_NETWORK_NAME}}:
         labels: {{VIRTUAL_NETWORK_PLUGIN_LABELS}}
     {{/ENABLE_VIRTUAL_NETWORK}}
-     image: {{SQLCLUSTER_IMAGE}}
+    resource-sets:
+      init-resources:
+        cpus: {{NODE_CPUS}}
+        memory: {{NODE_MEM}}
+        ports:
+            db-port:
+              port: 0
+              advertise: true
+              vip:
+                prefix: db
+                port: {{NODE_PORT}}
+    image: {{SQLCLUSTER_IMAGE}}
     tasks:
       node:
         goal: RUNNING
