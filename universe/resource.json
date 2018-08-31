@@ -11,7 +11,7 @@
     },
   "container": {
      "docker": {
-       "SQL-cluster": "microsoft/mssql-server-linux:2017-latest"
+       "SQL_cluster": "microsoft/mssql-server-linux:2017-latest"
 }
 }
   },
